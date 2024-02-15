@@ -1,0 +1,41 @@
+server:
+  port: 8076
+  forward-headers-strategy: framework
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: spring-redis-samples
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  name: ${spring.application.name}
+  description: Redis Demo
+  environment: ${spring.profiles.active}
+  version: 0.0.1
+
+springdoc:
+  version: '@springdoc.version@'
+  api-docs:
+    version: openapi_3_1
+  swagger-ui:
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+  show-actuator: true
+  cache:
+    disabled: true
