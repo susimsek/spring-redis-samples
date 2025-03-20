@@ -2,6 +2,9 @@ server:
   port: 8076
   forward-headers-strategy: framework
 spring:
+  mvc:
+    problemdetails:
+      enabled: true
   main:
     allow-bean-definition-overriding: true
   application:
@@ -39,3 +42,13 @@ springdoc:
   show-actuator: true
   cache:
     disabled: true
+
+rateLimiter:
+  bucketExpireDuration: 1m
+  defaultConfig:
+    limitForPeriod: 100
+    limitRefreshPeriod: 60s
+  configs:
+    sampleOperation:
+      limitForPeriod: 2
+      limitRefreshPeriod: 60s
